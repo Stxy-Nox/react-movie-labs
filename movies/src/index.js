@@ -24,7 +24,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage";
+import FavoriteMoviesPage from "./pages/favoriteMoviesPage.js";
 
 const App = () => {
   return (
