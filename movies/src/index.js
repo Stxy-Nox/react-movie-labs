@@ -25,6 +25,7 @@ import { BrowserRouter, Route, Navigate, Routes, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage.js";
+import MovieReviewPage from "./pages/movieReviewPage";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
+        <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
       </Routes>
     </BrowserRouter>
   );
