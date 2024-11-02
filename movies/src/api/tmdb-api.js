@@ -21,6 +21,7 @@ export const getMovies = () => {
       .then(res => res.json())
       .then(json => json.genres);
   };
+
   
   export const getMovieImages = (id) => {
     return fetch(
