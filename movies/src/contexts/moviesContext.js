@@ -30,6 +30,7 @@ const MoviesContextProvider = (props) => {
       newPlaylists = [...playlists];
     }
     setPlaylists(newPlaylists)
+    console.log(playlists);
   }
 
   const addReview = (movie, review) => {
