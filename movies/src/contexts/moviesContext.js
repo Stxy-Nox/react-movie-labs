@@ -17,6 +17,7 @@ const MoviesContextProvider = (props) => {
       newFavorites = [...favorites];
     }
     setFavorites(newFavorites)
+    console.log("faovourite:"+favorites);
   };
 
   
@@ -30,7 +31,7 @@ const MoviesContextProvider = (props) => {
       newPlaylists = [...playlists];
     }
     setPlaylists(newPlaylists)
-    console.log(playlists);
+    console.log("Playlist:"+playlists);
   }
 
   const addReview = (movie, review) => {
@@ -58,7 +59,8 @@ const MoviesContextProvider = (props) => {
         removeFromFavorites,
         addReview,
         playlists,
-        addToPlaylist
+        addToPlaylist,
+        removeFromPlaylist
       }}
     >
       {props.children}
