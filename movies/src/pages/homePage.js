@@ -19,7 +19,7 @@ const HomePage = (props) => {
   }  
   const movies = data.results;
   const totalPages = data.total_pages;
-  console.log("total pages: "+totalPages)
+  // console.log("total pages: "+totalPages)
 
   // Redundant, but necessary to avoid app crashing.
   const favorites = movies.filter(m => m.favorite)
