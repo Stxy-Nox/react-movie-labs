@@ -30,9 +30,10 @@ export const getUpcomingMovies = () => {
   });
 };
 
-export const getTrendings = () => {
+export const getTrendings = (timeWindow) => {
+
   return fetch(
-    `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/trending/movie/${timeWindow}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
   ).then((response) => {
     if (!response.ok) {
       return response.json().then((error) => {
