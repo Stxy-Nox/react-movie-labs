@@ -7,7 +7,7 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import BasicPagination from "../components/pagination";
 
 const HomePage = (props) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);//dont need to cached
   const {  data, error, isLoading, isError }  = useQuery(['discover',currentPage], getMovies)
 
   if (isLoading) {
