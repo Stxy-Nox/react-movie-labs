@@ -18,6 +18,8 @@ const HomePage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const movies = data.results;
+  const totalPages = data.total_pages;
+  console.log("total pages: "+totalPages)
 
   // Redundant, but necessary to avoid app crashing.
   const favorites = movies.filter(m => m.favorite)
@@ -33,7 +35,11 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
     />
-    <BasicPagination />
+    <BasicPagination 
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={(page) => setCurrentPage(page)}
+    />
     </>
 );
 }
