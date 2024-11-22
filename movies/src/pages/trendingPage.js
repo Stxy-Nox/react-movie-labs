@@ -4,10 +4,12 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
+import { useParams } from "react-router-dom";
 
 const TrendingPage = (props) => {
 
-    const {data, error, isLoading, isError} = useQuery('trending',getTrendings)
+    const {timeWindow} = useParams();
+    const {data, error, isLoading, isError} = useQuery(['trending',timeWindow],getTrendings)
 
     if (isLoading) {
         return <Spinner />
