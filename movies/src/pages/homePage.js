@@ -4,6 +4,7 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import BasicPagination from "../components/pagination";
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +25,7 @@ const HomePage = (props) => {
   const addToFavorites = (movieId) => true 
 
   return (
+    <>
     <PageTemplate
       title="Discover Movies"
       movies={movies}
@@ -31,6 +33,8 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
     />
+    <BasicPagination />
+    </>
 );
 }
 export default HomePage;
