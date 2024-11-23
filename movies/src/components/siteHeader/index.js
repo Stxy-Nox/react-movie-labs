@@ -16,12 +16,9 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
+  const [anchorEl, setAnchorEl] = useState({});//will occur error if set null
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
   const navigate = useNavigate();
 
   const menuOptions = [
@@ -47,12 +44,18 @@ const SiteHeader = ({ history }) => {
   ];
 
   const handleMenuSelect = (pageURL) => {
+    
     navigate(pageURL, { replace: true });   
   };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenuOpen = (event,label) => {//manage different label's open state spreately
+    setAnchorEl(prev => ({...prev, [label]: event.currentTarget}));
+    
   };
+
+  const handleMenuClose = (label) => {
+    setAnchorEl(prev => ({ ...prev, [label]: null }));
+  }
 
   return (
     <>
@@ -70,7 +73,7 @@ const SiteHeader = ({ history }) => {
                   aria-label="menu"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={handleMenu}
+                  onClick={(event => handleMenuOpen(event, "mobileMenu"))}
                   color="inherit"
                 >
                   <MenuIcon />
@@ -87,7 +90,7 @@ const SiteHeader = ({ history }) => {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                  open={open}
+                  open={Boolean(anchorEl["mobileMenu"])}
                   onClose={() => setAnchorEl(null)}
                 >
                   {menuOptions.map((opt) => (
@@ -118,15 +121,15 @@ const SiteHeader = ({ history }) => {
                     <div>
                       <Button
                         color="inherit"
-                        aria-controls={"menu-appbar"}
+                        aria-controls={`${opt.label}-menu`}
                         aria-haspopup="true"
-                        onClick={handleMenu}
+                        onClick={(event) => handleMenuOpen(event, opt.label)}//prevent mix labels open state
                       >
                         {opt.label}
                       </Button>
                       <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
+                        id={`${opt.label}-menu`}
+                        anchorEl={anchorEl[opt.label]}
                         anchorOrigin={{
                           vertical: "top",
                           horizontal: "right",
@@ -136,8 +139,8 @@ const SiteHeader = ({ history }) => {
                           vertical: "top",
                           horizontal: "right",
                         }}
-                        open={open}
-                        onClose={() => setAnchorEl(null)}
+                        open={Boolean(anchorEl[opt.label])}
+                        onClose={() => handleMenuClose(opt.label)}
                       >
                         {opt.subOptions.map((subOpt) => (
                           <MenuItem 
