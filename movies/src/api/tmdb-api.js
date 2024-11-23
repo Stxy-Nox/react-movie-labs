@@ -16,6 +16,23 @@ export const getMovies = (args) => {
   });
 };
 
+export const getPopular = (args) => { //get popular people
+  const [,page] = args.queryKey;
+  return fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
+  ).then((response) => {
+    if (!response.ok) {
+      return response.json().then((error) => {
+        throw new Error(error.status_message || "Something went wrong");
+      });
+    }
+    return response.json();
+  })
+  .catch((error) => {
+      throw error
+  });
+};
+
 export const getUpcomingMovies = (args) => {
   const [,page] = args.queryKey;
   // console.log("current page: "+page);
@@ -108,6 +125,8 @@ export const getMovie = (args) => {
       throw error
    });
   };
+
+
 
   export const getMovieReviews = ({ queryKey }) => {
     const [, idPart] = queryKey;

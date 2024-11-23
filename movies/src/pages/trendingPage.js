@@ -26,7 +26,7 @@ const TrendingPage = (props) => {
 
     return(
         <PageTemplate 
-            title={'Trending Movies'}
+            title={'Trending for '+  timeWindow }
             movies={movies}
             action={(movie) => {
                 return <AddToFavoritesIcon movie={movie} />
