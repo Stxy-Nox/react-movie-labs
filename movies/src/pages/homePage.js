@@ -35,6 +35,7 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
     />
+    
     <BasicPagination 
       currentPage={currentPage}
       totalPages={totalPages}
