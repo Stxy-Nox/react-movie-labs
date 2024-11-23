@@ -47,7 +47,7 @@ const SiteHeader = ({ history }) => {
   ];
 
   const handleMenuSelect = (pageURL) => {
-    navigate(pageURL, { replace: true });
+    navigate(pageURL, { replace: true });   
   };
 
   const handleMenu = (event) => {
@@ -91,20 +91,29 @@ const SiteHeader = ({ history }) => {
                   onClose={() => setAnchorEl(null)}
                 >
                   {menuOptions.map((opt) => (
+                    opt.subOptions ? (
+                      opt.subOptions.map((subOpt) => (
+                        <MenuItem
+                          key={subOpt.label}
+                          onClick={() => handleMenuSelect(subOpt.path)}
+                        >
+                          {subOpt.label}
+                        </MenuItem>
+                      ))
+                  ) : (
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
                     >
                       {opt.label}
                     </MenuItem>
+                  )
                   ))}
                 </Menu>
               </>
             ) : (
               <>
-                
-
-
+            
 
                 {menuOptions.map((opt) => (
                   <Button
