@@ -115,40 +115,48 @@ const SiteHeader = ({ history }) => {
               <>
                 {menuOptions.map((opt) => (
                   opt.subOptions ? (               
-                      opt.subOptions.map((subOpt) => (
-                        <div>
-                        <Button
-                          id="basic-button"
-                          aria-controls={open ? 'basic-menu' : undefined}
-                          aria-haspopup="true"
-                          aria-expanded={open ? 'true' : undefined}
-                          onClick={handleClick}
-                        >
-                          Dashboard
-                        </Button>
-                        <Menu
-                          id="basic-menu"
-                          anchorEl={anchorEl}
-                          open={open}
-                          onClose={handleClose}
-                          MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                          }}
-                        >
-                          <MenuItem onClick={handleClose}>Profile</MenuItem>
-                          <MenuItem onClick={handleClose}>My account</MenuItem>
-                          <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Menu>
-                      </div>
-                      ))         
+                    <div>
+                      <Button
+                        color="inherit"
+                        aria-controls={"menu-appbar"}
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                      >
+                        {opt.label}
+                      </Button>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                        open={open}
+                        onClose={() => setAnchorEl(null)}
+                      >
+                        {opt.subOptions.map((subOpt) => (
+                          <MenuItem 
+                          key={subOpt.label}
+                          onClick={() => handleMenuSelect(subOpt.path)}
+                          >
+                            {subOpt.label}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </div>
                   ) : (
                     <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
+                      key={opt.label}
+                      color="inherit"
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </Button>
                   )
                 ))}
               </>
