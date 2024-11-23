@@ -9,11 +9,19 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
+import { cardActionAreaClasses } from "@mui/material";
 
 
 export default function PeopleCard(people) {
 
+    return (
+        <Card>
+           <CardHeader>
+            
+            </CardHeader> 
+        </Card>
 
+    )
 
 
 }

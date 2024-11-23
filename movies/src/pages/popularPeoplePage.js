@@ -3,6 +3,7 @@ import {  getPopular } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import BasicPagination from "../components/pagination";
+import PageTemplate from "../components/templatePeopleListPage"
 
 const PopularPeoplePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);//dont need to cached

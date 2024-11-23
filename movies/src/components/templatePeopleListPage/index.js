@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import MovieList from "../movieList";
+import PeopleList from "../peopleList";
 import Grid from "@mui/material/Grid2";
 
 function PeopleListPageTemplate({ people, title }) {
@@ -11,7 +11,7 @@ function PeopleListPageTemplate({ people, title }) {
           <Header title={title} />
         </Grid>
         <Grid container sx={{flex: "1 1 500px"}}>
-          <MovieList  people={people}></MovieList>
+          <PeopleList  people={people}></PeopleList>
         </Grid>
       </Grid>
     );
