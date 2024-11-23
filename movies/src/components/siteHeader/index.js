@@ -131,7 +131,7 @@ const SiteHeader = ({ history }) => {
                         id={`${opt.label}-menu`}
                         anchorEl={anchorEl[opt.label]}
                         anchorOrigin={{
-                          vertical: "top",
+                          vertical: "bottom",
                           horizontal: "right",
                         }}
                         keepMounted
