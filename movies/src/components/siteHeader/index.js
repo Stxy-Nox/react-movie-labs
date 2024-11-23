@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
@@ -25,12 +26,24 @@ const SiteHeader = ({ history }) => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Trending Today",path:"/movies/trending/day"},
-    { label: "Trending Week",path:"/movies/trending/week"},
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Playlist", path: "/movies/playlist" },
-  
+    { label: "Movies", 
+      subOptions: [
+        { label: "Trending Today",path:"/movies/trending/day"},
+        { label: "Trending Week",path:"/movies/trending/week"},
+        { label: "Upcoming", path: "/movies/upcoming" },
+      ]
+    },
+    { label: "People",
+      subOptions: [
+        { label: "Popular", path:"/"},
+      ]
+    },
+    { label :"My pages",
+      subOptions: [
+        { label: "Favorites", path: "/movies/favorites" },
+        { label: "Playlist", path: "/movies/playlist" },
+      ]
+    }
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -89,6 +102,10 @@ const SiteHeader = ({ history }) => {
               </>
             ) : (
               <>
+                
+
+
+
                 {menuOptions.map((opt) => (
                   <Button
                     key={opt.label}
