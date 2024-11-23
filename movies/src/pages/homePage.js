@@ -21,7 +21,7 @@ const HomePage = (props) => {
   const totalPages = data.total_pages;
   // console.log("total pages: "+totalPages)
 
-  // Redundant, but necessary to avoid app crashing.
+
   const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
   const addToFavorites = (movieId) => true 

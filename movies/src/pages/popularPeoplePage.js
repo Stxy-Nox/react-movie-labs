@@ -14,9 +14,9 @@ const PopularPeoplePage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-
+  const popularPeople = data.results;
   const totalPages = data.total_pages;
-  // console.log("total pages: "+totalPages)
+  console.log("total pages: "+totalPages)
 
 
   return (
