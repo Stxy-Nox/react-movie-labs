@@ -9,13 +9,14 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
 import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
-import { cardActionAreaClasses } from "@mui/material";
+import { CardActionArea, cardActionAreaClasses } from "@mui/material";
 
 
 export default function PeopleCard(props) {
     const konwForMovies = props.people.known_for.map((movie) => movie.original_title).join(",");
     return (
         <Card>
+            <CardActionArea component={Link} to={`/people/${props.people.id}`}>
            <CardHeader
                 title={props.people.known_for_department}
                 titleTypographyProps={{ variant: 'h6', component: 'p' }}
@@ -36,7 +37,7 @@ export default function PeopleCard(props) {
                 {konwForMovies}
             </Typography>
             </CardContent>
-          
+          </CardActionArea>
         </Card>
 
     )
