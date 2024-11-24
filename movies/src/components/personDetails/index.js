@@ -19,7 +19,11 @@ const root = {
     padding: 1.5,
     margin: 0,
 };
-const chip = { margin: 0.5 };
+
+const chip = { 
+    margin: 0.5,
+    marginTop: "20px",
+};
 
 const PersonDetails = ({ person }) => {  
     const navigate = useNavigate();
@@ -48,15 +52,18 @@ const PersonDetails = ({ person }) => {
         </IconButton>
         </Paper>
 
-        <Typography variant="h5" component="h3">
+        <Paper sx={{marginTop: "20px"}}>
+        <Typography variant="h5" component="h3" sx={{...chip}}>
             Biography
         </Typography>
         
-        <Typography variant="h6" component={"p"}>
+        <Typography variant="h6" component={"p"} sx={{...chip}}>
             {person.biography}
         </Typography>
+        </Paper>
+        
             
-        <Paper component="ul" sx={{...root}}>
+        <Paper component="ul" sx={{...root,marginTop: "20px"}}>
             <li>
                 <Chip label="Also konwn as: " sx={{...chip}} color="primary" />
             </li>
