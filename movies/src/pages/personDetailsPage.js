@@ -4,6 +4,7 @@ import PageTemplate from "../components/templatePersonPage";
 import { getPreson } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
+import PersonDetails from "../components/personDetails";
 
 const PersonPage = (props) => {
   const { id } = useParams();
@@ -21,7 +22,17 @@ const PersonPage = (props) => {
   }
 
   return(
-
+    <>
+      {person ? (
+        <>
+          <PageTemplate person = {person}>
+            <PersonDetails person={person} />
+          </PageTemplate>
+        </>
+      ) : (
+        <p>Waiting for person details</p>
+      )}    
+    </>
   )
 }
 
