@@ -7,7 +7,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import FormControl from "@mui/material/FormControl";
+import FormControl, { formControlClasses } from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres, getLanguages } from "../../api/tmdb-api";
@@ -127,13 +127,22 @@ export default function FilterMoviesCard(props) {
             })}
                 </Select>
         </FormControl>
-        <Box sx={{ width: 300 }}>
+        <Box sx={{ ...formControl }}>
+          <Typography id="rating-slider" gutterBottom>
+            Rating Range
+          </Typography>
           <Slider
-            getAriaLabel={() => 'Temperature range'}
-            value={value}
-            onChange={handleChange}
+            
+            value={props.ratingFilter}
+            onChange={handleRatingChange}
             valueLabelDisplay="auto"
-           getAriaValueText={valuetext}
+            min={0}
+            max={10}
+            step={0.5}
+            marks={[
+              { value: 0, label: '0' },
+              { value: 10, label: '10' }
+            ]}
           />
         </Box>
       </CardContent>
