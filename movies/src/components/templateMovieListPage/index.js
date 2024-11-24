@@ -3,6 +3,9 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid2";
+import { ImageNotSupportedRounded } from "@mui/icons-material";
+import { set } from "react-hook-form";
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -12,7 +15,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const genreId = Number(genreFilter);
 
   const [sortBy, setSortBy] = useState(" ");
-  const [sortDirection, serSortDirection] = useState("asc");
+  const [sortDirection, setSortDirection] = useState("asc");
 
   let displayedMovies = movies
     .filter((m) => {
@@ -30,11 +33,33 @@ function MovieListPageTemplate({ movies, title, action }) {
       )
     })
 
+    if(sortBy) {//very clever method, not mine 
+      displayedMovies = displayedMovies.sort((a,b) => {
+        let aValue = a[sortBy];
+        let bValue = b[sortBy];
+  
+        if (sortBy === "release_date"){//make sure sort correctly if sort relesase date
+          aValue = new Date(aValue);
+          bValue = new Date(bValue); 
+        }
+  
+        if(aValue < bValue) {
+          return sortDirection === "asc" ? -1 :1;
+        }
+        else if (aValue > bValue) {
+          return sortDirection === "asc" ? 1 : -1;
+        }
+        else return 0;
+      })
+    }
+
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
     else if (type === "genre") setGenreFilter(value);
     else if (type === "language") setLanguageFilter(value);
-    else setRatingFilter(value);
+    else if (type === "rating") setRatingFilter(value);
+    else if (type === "sortBy") setSortBy(value);
+    else setSortDirection(value);
 
   };
 
@@ -55,6 +80,8 @@ function MovieListPageTemplate({ movies, title, action }) {
             genreFilter={genreFilter}
             languageFilter={languageFilter}
             ratingFilter={ratingFilter}
+            sortBy={sortBy}
+            sortDirection={sortDirection}
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
