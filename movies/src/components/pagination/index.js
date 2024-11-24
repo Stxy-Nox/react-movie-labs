@@ -13,7 +13,7 @@ export default function BasicPagination({ currentPage, totalPages, onPageChange 
       <Pagination 
       count={totalPages}
       page={currentPage}
-      onChange={handleChage} //follow the mui example "Controlled pagination"
+      onChange={handleChage} 
       color="primary" 
       showFirstButton
       showLastButton
