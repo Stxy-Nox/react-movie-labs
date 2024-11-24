@@ -80,7 +80,7 @@ npm start
 
 
 
-## Independent learning (If relevant).
+## Independent learning .
 
 - Use MUI pagination component - [Pagination](https://mui.com/material-ui/react-pagination/)
 
@@ -89,5 +89,3 @@ npm start
 - Use MUI Range slider component - [Range slider](https://mui.com/material-ui/react-slider/#range-slider)
 
 - Use MUI CardActionArea - [CardActionArea API](https://mui.com/material-ui/api/card-action-area/)
-
-  
