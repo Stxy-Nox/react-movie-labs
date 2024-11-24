@@ -22,12 +22,10 @@ const PopularPeoplePage = (props) => {
 
   return (
     <>
-    <PageTemplate>
+    <PageTemplate
       title="Popular People"
       people={popularPeople}
-
-    </PageTemplate>
-
+      /> 
     <BasicPagination 
     currentPage={currentPage}
     totalPages={totalPages}
