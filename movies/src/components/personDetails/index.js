@@ -36,8 +36,8 @@ const PersonDetails = ({ person }) => {
                 <Chip label="AKA" sx={{...chip}} color="secondry" />
             </li>
             {person.also_known_as.map((a) => (
-                <li key={a.name}>
-                    <Chip label={a.name} sx={{...chip}} />
+                <li key={a}>
+                    <Chip label={a} sx={{...chip}} />
                 </li>
             ))}
         </Paper>
