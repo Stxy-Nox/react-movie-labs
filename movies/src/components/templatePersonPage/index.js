@@ -43,7 +43,7 @@ const TemplatePersonPage = ({ person, children}) => {
             <ImageListItem key={images.file_path} cols={1}>
               <img 
                 src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                alt={image.profile_path}
+                alt={image.file_path}
             />
             </ImageListItem>
           ))}

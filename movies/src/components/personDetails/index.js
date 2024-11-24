@@ -22,6 +22,7 @@ const PersonDetails = ({ person }) => {
 
     return (
         <>  
+        
         <Typography variant="h5" component="h3">
             Biography
         </Typography>
