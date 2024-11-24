@@ -15,6 +15,7 @@ import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 export default function MovieCard({movie, action}) {
   const { favorites, addToFavorites } = useContext(MoviesContext);
@@ -32,7 +33,7 @@ export default function MovieCard({movie, action}) {
   };
 
   return (
-    <Card>
+    <Card sx={ {backgroundColor: "#f5f5f5"}}> {/*light grey*/}
       <CardHeader
         avatar={
           movie.favorite ? (
@@ -42,7 +43,7 @@ export default function MovieCard({movie, action}) {
           ) : null
         }
         title={
-          <Typography variant="h7" component="p">
+          <Typography variant="h" component="p">
             {movie.title}{" "}
           </Typography>
         }
@@ -57,7 +58,7 @@ export default function MovieCard({movie, action}) {
       />
       <CardContent>
         <Grid container>
-          <Grid size={{ xs: 6 }}>
+          <Grid size={{ xs: 12 }}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
               {movie.release_date}
@@ -70,6 +71,13 @@ export default function MovieCard({movie, action}) {
             </Typography>
           </Grid>
         </Grid>
+        <Grid size={{ xs: 6 }}>
+            <Typography variant="h6" component="p">
+              <HowToRegIcon fontSize="small"/>
+              {"  "} {movie.vote_count}{" "}
+            </Typography>
+          </Grid>
+        
       </CardContent>
       <CardActions disableSpacing>
       
