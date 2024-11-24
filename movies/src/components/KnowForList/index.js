@@ -11,11 +11,11 @@ const KnownForList = ({ knownFor }) => {
   }
 
   return (
-    <div>
+    <div style={{ marginTop: "20px", backgroundColor:"#f5f5f5" }} >
       <Typography variant="h6" component={"h4"} gutterBottom>
         Known for :
       </Typography>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <ImageList sx={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'scroll', }} cols={1}>
         {knownFor.map((movie) => (
           <Link to={`/movies/${movie.id}`}  >
           <ImageListItem key={movie.id} >

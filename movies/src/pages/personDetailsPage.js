@@ -28,7 +28,7 @@ const PersonPage = (props) => {
     return <h1>{creditError.message}</h1>;
   }
 
-  const knownForMovies = creditData.cast.sort((a,b) => b.popularity - a.popularity).slice(0,10); //sort ant get top 10 popular movies for a person
+  const knownForMovies = creditData.cast.sort((a,b) => b.popularity - a.popularity).slice(0,20); //sort ant get top 20 popular movies for a person
 
   return(
     <>
