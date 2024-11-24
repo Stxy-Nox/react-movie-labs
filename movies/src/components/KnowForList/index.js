@@ -17,7 +17,7 @@ const KnownForList = ({ knownFor }) => {
       </Typography>
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {knownFor.map((movie) => (
-          <>
+          <Link to={`/movies/${movie.id}`}  >
           <ImageListItem key={movie.id} >
             <img
               src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : img }
@@ -28,7 +28,7 @@ const KnownForList = ({ knownFor }) => {
           <Typography variant="subtitle1" component={"p"} align="center">
             {movie.title}
           </Typography>
-          </>
+          </Link>
         ))}
 
       </ImageList>
