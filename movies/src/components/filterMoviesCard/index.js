@@ -44,7 +44,7 @@ export default function FilterMoviesCard(props) {
   }
 
   const languages = languagesData;
-  if (languages[0].name !== "All"){
+  if (languages[0].iso_639_1 !== "All"){
     languages.unshift({ iso_639_1: "all", english_name: "All", name:"" });
   }
 
