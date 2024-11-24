@@ -13,7 +13,7 @@ import { cardActionAreaClasses } from "@mui/material";
 
 
 export default function PeopleCard(people) {
-
+    const konwForMovies = people.known_for.map((movie) => movie.orifinal_title).join(",");
     return (
         <Card>
            <CardHeader>
@@ -31,7 +31,14 @@ export default function PeopleCard(people) {
                     : img
                 }
             />
-
+            <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+                {people.name}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {konwForMovies}
+            </Typography>
+            </CardContent>
           
         </Card>
 

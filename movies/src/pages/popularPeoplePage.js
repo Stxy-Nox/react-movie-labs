@@ -21,12 +21,19 @@ const PopularPeoplePage = (props) => {
 
 
   return (
-    
+    <>
+    <PageTemplate>
+      title="Popular People"
+      people={popularPeople}
+
+    </PageTemplate>
+
     <BasicPagination 
     currentPage={currentPage}
     totalPages={totalPages}
     onPageChange={(page) => setCurrentPage(page)}
   />
+  </>
 );
 }
 export default PopularPeoplePage;
