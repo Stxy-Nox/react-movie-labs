@@ -67,7 +67,7 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "language", e.target.value);
   };
 
-  const handleRatingChange = (e,newValue) => {//dont have rating state in this compoent, so need new value from template movie list page
+  const handleRatingChange = (e,newValue) => {
     handleChange(e, "rating", newValue);
   }
 
