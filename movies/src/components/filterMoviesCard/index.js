@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getGenres } from "../../api/tmdb-api";
+import { getGenres, getLanguages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
@@ -27,17 +27,25 @@ export default function FilterMoviesCard(props) {
   const { data: languagesData, error: languagesError, isLoading: languagesLoading, isError: languagesIsError } = useQuery("languages", getLanguages);
   
 
-  if (genresIsLoading) {
+  if (genresIsLoading || languagesLoading) {
     return <Spinner />;
   }
 
-  if (genresIsError) {
+  if (genresIsError ) {
     return <h1>{genresError.message}</h1>;
+  }
+  if (languagesIsError ) {
+    return <h1>{languagesError.message}</h1>;
   }
 
   const genres = genresData.genres;
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });//put all at the fisrt place of  filter options
+  }
+
+  const languages = languagesData;
+  if (languages[0].name !== "All"){
+    languages.unshift({ iso_639_1: "all", english_name: "All", name:"" });
   }
 
   const handleChange = (e, type, value) => {
@@ -52,6 +60,12 @@ export default function FilterMoviesCard(props) {
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
   };
+
+  const handleLanguageChange = (e) => {
+    handleChange(e, "language", e.target.value);
+  };
+
+
 
   return (
     <Card 

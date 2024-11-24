@@ -92,9 +92,24 @@ export const getMovie = (args) => {
   
   export const getGenres = () => {
     return fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-        process.env.REACT_APP_TMDB_KEY +
-        "&language=en-US"
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    ).then( (response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+  export const getLanguages = () => {
+    return fetch(
+      "https://api.themoviedb.org/3/configuration/languages?api_key=" +
+        process.env.REACT_APP_TMDB_KEY 
     ).then( (response) => {
       if (!response.ok) {
         return response.json().then((error) => {
