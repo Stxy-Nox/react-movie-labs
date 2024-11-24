@@ -76,7 +76,7 @@ export default function FilterMoviesCard(props) {
   }
 
   const handleSortDirectionChange = (e) => {
-    handleChange()
+    handleChange(e, "sortDirection", e.target.value)
   }
 
   return (
@@ -186,13 +186,6 @@ export default function FilterMoviesCard(props) {
         image={img}
         title="Filter"
       />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
     </Card>
   );
 }
