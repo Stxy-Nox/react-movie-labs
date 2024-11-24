@@ -1,6 +1,5 @@
-export const getMovies = (args) => {
+export const getMovies = (args) => {//add parameter page
   const [,page] = args.queryKey;
-  // console.log("current page: "+page);
   return fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
   ).then((response) => {
@@ -16,7 +15,7 @@ export const getMovies = (args) => {
   });
 };
 
-export const getPopular = (args) => { //get popular people
+export const getPopular = (args) => { //get popular people 
   const [,page] = args.queryKey;
   return fetch(
     `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
@@ -33,9 +32,9 @@ export const getPopular = (args) => { //get popular people
   });
 };
 
-export const getUpcomingMovies = (args) => {
+export const getUpcomingMovies = (args) => {// add parameter page
   const [,page] = args.queryKey;
-  // console.log("current page: "+page);
+
   return fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
   ).then((response) => {
@@ -51,7 +50,7 @@ export const getUpcomingMovies = (args) => {
   });
 };
 
-export const getTrendings = (args) => {
+export const getTrendings = (args) => { //add parameter day and week
   
   const [,timeWindow] = args.queryKey;
   console.log(timeWindow);
@@ -71,8 +70,7 @@ export const getTrendings = (args) => {
   })
 }
   
-export const getMovie = (args) => {
-  //console.log(args)
+export const getMovie = (args) => { 
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -109,8 +107,7 @@ export const getMovie = (args) => {
 //  });
 // };
 
-export const getPreson = (args) => {
-  //console.log(args)
+export const getPreson = (args) => { //get person detail 
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -128,7 +125,7 @@ export const getPreson = (args) => {
  });
 };
 
-export const getPresonCredits = (args) => {
+export const getPresonCredits = (args) => { //get person's credit movies
   //console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
@@ -147,7 +144,7 @@ export const getPresonCredits = (args) => {
  });
 };
   
-  export const getGenres = () => {
+  export const getGenres = () => { 
     return fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then( (response) => {
@@ -163,7 +160,7 @@ export const getPresonCredits = (args) => {
    });
   };
 
-  export const getLanguages = () => {
+  export const getLanguages = () => { //get all languages type that tmdb use
     return fetch(
       "https://api.themoviedb.org/3/configuration/languages?api_key=" +
         process.env.REACT_APP_TMDB_KEY 
@@ -180,7 +177,7 @@ export const getPresonCredits = (args) => {
    });
   };
 
-  export const getMovieImages = ({ queryKey }) => {
+  export const getMovieImages = ({ queryKey }) => { 
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
@@ -198,7 +195,7 @@ export const getPresonCredits = (args) => {
    });
   };
 
-  export const getPersonImages = ({ queryKey }) => {
+  export const getPersonImages = ({ queryKey }) => { //get person images for person page
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
