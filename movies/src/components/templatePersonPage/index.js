@@ -8,6 +8,10 @@ import Spinner from '../spinner'
 
 const TemplatePersonPage = ({ person, children}) => {
 
+  const {data , error, isLoading, isError } = useQuery(
+    ["presonImages", {id: person.id}],
+    getPersonImages
+  );
 
 }
 
