@@ -17,8 +17,22 @@ export default function PeopleCard(people) {
     return (
         <Card>
            <CardHeader>
-            
+                role={
+                    <Typography variant="h5" component={"p"}>
+                        {people.known_for_department}{" "}
+                    </Typography>
+                }
             </CardHeader> 
+            <CardMedia
+                sx={{ height: 500 }}
+                image={
+                  people.profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${people.profile_path}`
+                    : img
+                }
+            />
+
+          
         </Card>
 
     )
