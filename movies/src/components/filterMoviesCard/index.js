@@ -13,6 +13,8 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres, getLanguages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 
 const formControl = 
   {
@@ -44,7 +46,7 @@ export default function FilterMoviesCard(props) {
   }
 
   const languages = languagesData;
-  if (languages[0].iso_639_1 !== "All"){
+  if (languages[0].iso_639_1 !== "all"){
     languages.unshift({ iso_639_1: "all", english_name: "All", name:"" });
   }
 
@@ -65,7 +67,9 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "language", e.target.value);
   };
 
-
+  const handleRatingChange = (e,newValue) => {//dont have rating state in this compoent, so need new value from template movie list page
+    handleChange(e, "rating", newValue);
+  }
 
   return (
     <Card 
@@ -123,6 +127,15 @@ export default function FilterMoviesCard(props) {
             })}
                 </Select>
         </FormControl>
+        <Box sx={{ width: 300 }}>
+          <Slider
+            getAriaLabel={() => 'Temperature range'}
+            value={value}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+           getAriaValueText={valuetext}
+          />
+        </Box>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
