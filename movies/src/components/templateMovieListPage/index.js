@@ -11,6 +11,9 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [ratingFilter, setRatingFilter] = useState([0,10])
   const genreId = Number(genreFilter);
 
+  const [sortBy, setSortBy] = useState(" ");
+  const [sortDirection, serSortDirection] = useState("asc");
+
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
