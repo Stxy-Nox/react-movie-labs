@@ -8,25 +8,25 @@ import PersonDetails from "../components/personDetails";
 
 const PersonPage = (props) => {
   const { id } = useParams();
-  const { data: person, error, isLoading, isError } = useQuery(
+  const { data: personData, error:personError, isLoading:personIsLoading, isError:personIsError } = useQuery(
     ["person", {id : id}],
     getPreson
   )
 
-  if (isLoading) {
+  if (personIsLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
+  if (personIsError) {
     return <h1>{error.message}</h1>;
   }
 
   return(
     <>
-      {person ? (
+      {personData ? (
         <>
-          <PageTemplate person = {person}>
-            <PersonDetails person={person} />
+          <PageTemplate person = {personData}>
+            <PersonDetails person={personData} />
           </PageTemplate>
         </>
       ) : (
