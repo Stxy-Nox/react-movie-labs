@@ -19,7 +19,7 @@ export const getMovies = (args) => {
 export const getPopular = (args) => { //get popular people
   const [,page] = args.queryKey;
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
   ).then((response) => {
     if (!response.ok) {
       return response.json().then((error) => {
