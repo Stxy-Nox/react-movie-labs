@@ -18,7 +18,7 @@ const PersonPage = (props) => {
   }
 
   if (personIsError) {
-    return <h1>{error.message}</h1>;
+    return <h1>{personError.message}</h1>;
   }
 
   return(
