@@ -5,8 +5,11 @@ import Typography from "@mui/material/Typography";
 import CakeIcon from '@mui/icons-material/Cake';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
-
-
+import { useNavigate } from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import HomeIcon from "@mui/icons-material/Home";
 
 const root = {
     display: "flex",
@@ -19,9 +22,36 @@ const root = {
 const chip = { margin: 0.5 };
 
 const PersonDetails = ({ person }) => {  
-
+    const navigate = useNavigate();
     return (
         <>  
+        <Paper 
+            component="div" 
+            sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexWrap: "wrap",
+                padding: 1.5,
+                margin: 0,
+            }}
+        >
+        <IconButton aria-label="go back" onClick={() => navigate(-1)} >
+            <ArrowBackIcon color="primary" fontSize="large" />
+        </IconButton>
+
+        <Typography variant="h4" component="h3">
+            {movie.title}
+            <a href={movie.homepage}>
+            <HomeIcon color="primary" />
+            </a>
+            <br />
+            <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
+        </Typography>
+
+        <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
+            <ArrowForwardIcon color="primary" fontSize="large" />
+        </IconButton>
+        </Paper>
 
         <Typography variant="h5" component="h3">
             Biography
