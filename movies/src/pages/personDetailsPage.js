@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import PageTemplate from "../components/templatePersonPage";
-import { getPreson } from '../api/tmdb-api'
+import { getPreson , getPresonCredits} from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import PersonDetails from "../components/personDetails";
@@ -12,20 +12,29 @@ const PersonPage = (props) => {
     ["person", {id : id}],
     getPreson
   )
+  const { data: creditData, error:creditError, isLoading:creditIsLoading, isError:creditIsError } = useQuery(
+    ["credit", {id : id}],
+    getPresonCredits
+  )
 
-  if (personIsLoading) {
+  if (personIsLoading || creditIsLoading) {
     return <Spinner />;
   }
 
   if (personIsError) {
     return <h1>{personError.message}</h1>;
   }
+  if (creditIsError) {
+    return <h1>{creditError.message}</h1>;
+  }
+
+  const knownForMovies = creditData.cast.sort((a,b) => b.popularity - a.popularity).slice(0,10); //sort ant get top 10 popular movies for a person
 
   return(
     <>
       {personData ? (
         <>
-          <PageTemplate person = {personData}>
+          <PageTemplate person = {personData} knownFor= {knownForMovies}>
             <PersonDetails person={personData} />
           </PageTemplate>
         </>
