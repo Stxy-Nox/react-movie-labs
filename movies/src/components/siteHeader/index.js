@@ -32,7 +32,7 @@ const SiteHeader = ({ history }) => {
     },
     { label: "People",
       subOptions: [
-        { label: "Popular", path:"/"},
+        { label: "Popular", path:"/people"},
       ]
     },
     { label :"My pages",
