@@ -64,17 +64,17 @@ export default function MovieCard({movie, action}) {
               {movie.release_date}
             </Typography>
           </Grid>
-          <Grid size={{ xs: 6 }}>
+          <Grid size={{ xs: 10 }}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
+              {"Rating: "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
-        <Grid size={{ xs: 6 }}>
+        <Grid size={{ xs: 10 }}>
             <Typography variant="h6" component="p">
               <HowToRegIcon fontSize="small"/>
-              {"  "} {movie.vote_count}{" "}
+              {"Votes: "} {movie.vote_count}{" "}
             </Typography>
           </Grid>
         
