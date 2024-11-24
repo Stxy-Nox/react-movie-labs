@@ -105,6 +105,24 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="language-label">Language</InputLabel>
+          <Select
+            labelId="language-label"
+            id="language-select"
+            defaultValue="all"
+            value={props.languageFilter}
+            onChange={handleLanguageChange}
+          >
+            {languages.map((language) => {
+              return (
+                <MenuItem key={language.iso_639_1} value={language.iso_639_1}>
+                  {language.english_name}
+                </MenuItem>
+              );
+            })}
+                </Select>
+        </FormControl>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
