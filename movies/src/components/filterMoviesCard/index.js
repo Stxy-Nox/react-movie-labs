@@ -153,6 +153,19 @@ export default function FilterMoviesCard(props) {
             ]}
           />
         </Box>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="sort-by-label">Sort By</InputLabel>
+          <Select
+            labelId="sort-by-label"
+            id="sort-by-select"
+            value={props.sortBy}
+            onChange={handleSortByChange}
+          >
+            <MenuItem value=""><em>None</em></MenuItem>
+            <MenuItem value="vote_count">Vote Count</MenuItem>
+            <MenuItem value="release_date">Release Date</MenuItem>
+          </Select>
+        </FormControl>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
