@@ -25,6 +25,9 @@ const KnownForList = ({ knownFor }) => {
             />
           </ImageListItem>
         ))}
+        <Typography variant="subtitle1" component={"p"} align="center">
+          {movie.title}
+        </Typography>
       </ImageList>
     </div>
   )
