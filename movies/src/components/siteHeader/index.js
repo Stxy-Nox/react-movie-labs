@@ -16,12 +16,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
-  const [anchorEl, setAnchorEl] = useState({});//will occur error if set null
+  const [anchorEl, setAnchorEl] = useState({});//will occur error if it set null
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
 
-  const menuOptions = [
+  const menuOptions = [//sort labels into different groups
     { label: "Home", path: "/" },
     { label: "Movies", 
       subOptions: [
@@ -45,7 +45,8 @@ const SiteHeader = ({ history }) => {
 
   const handleMenuSelect = (pageURL) => {
     
-    navigate(pageURL, { replace: true });   
+    navigate(pageURL, { replace: true });
+    handleMenuClose("mobileMenu")   //fix bug: occur error in andriod device
   };
 
   const handleMenuOpen = (event,label) => {//manage different label's open state spreately
@@ -64,9 +65,9 @@ const SiteHeader = ({ history }) => {
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
           </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          {/* <Typography variant="h6" sx={{ flexGrow: 1 }}>// too much text will made siteheader overspread page content, so show it only on desktop side
             All you ever wanted to know about Movies!
-          </Typography>
+          </Typography> */}
             {isMobile ? (
               <>
                 <IconButton
@@ -91,7 +92,7 @@ const SiteHeader = ({ history }) => {
                     horizontal: "right",
                   }}
                   open={Boolean(anchorEl["mobileMenu"])}
-                  onClose={() => setAnchorEl(null)}
+                  onClose={() => handleMenuClose("mobileMenu")}//fix bug: occur error in andriod device
                 >
                   {menuOptions.map((opt) => (
                     opt.subOptions ? (
@@ -116,6 +117,9 @@ const SiteHeader = ({ history }) => {
               </>
             ) : (
               <>
+                {<Typography variant="h6" sx={{ flexGrow: 1 }}> 
+                  All you ever wanted to know about Movies!
+                </Typography> }  
                 {menuOptions.map((opt) => (
                   opt.subOptions ? (               
                     <div>
