@@ -5,9 +5,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { getPersonImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import KnownForList from "../KnowForList";
 
-
-const TemplatePersonPage = ({ person, children}) => {
+const TemplatePersonPage = ({ person, knownFor, children}) => {
 
   const {data , error, isLoading, isError } = useQuery(
     ["presonImages", {id: person.id}],
@@ -53,6 +53,7 @@ const TemplatePersonPage = ({ person, children}) => {
 
       <Grid size={{xs:9}}>
         {children}
+        <KnownForList knownFor={knownFor}/>
       </Grid>
     </Grid>
     </>
