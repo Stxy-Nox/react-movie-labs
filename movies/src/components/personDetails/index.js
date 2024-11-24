@@ -22,7 +22,7 @@ const PersonDetails = ({ person }) => {
 
     return (
         <>  
-        
+
         <Typography variant="h5" component="h3">
             Biography
         </Typography>
@@ -33,7 +33,7 @@ const PersonDetails = ({ person }) => {
             
         <Paper component="ul" sx={{...root}}>
             <li>
-                <Chip label="AKA" sx={{...chip}} color="secondry" />
+                <Chip label="Also konwn as: " sx={{...chip}} color="primary" />
             </li>
             {person.also_known_as.map((a) => (
                 <li key={a}>
@@ -42,10 +42,10 @@ const PersonDetails = ({ person }) => {
             ))}
         </Paper>
 
-        <Paper component={"ul"} sx={{...root}}>
-            <Chip icon={<AccountCircleIcon/>} label={person.known_for_department}/>
-            <Chip icon={<CakeIcon/>} label={person.birthday}/>
-            <Chip icon={<LocalFireDepartmentIcon/>} label={person.popularity}/>
+        <Paper component={"ul"} sx={{...root}} >
+            <Chip icon={<AccountCircleIcon/>} label={`Known for: ${person.known_for_department}`} color="secondary"/>
+            <Chip icon={<CakeIcon/>} label={`Brithday: ${person.birthday}`} color="secondary"/>
+            <Chip icon={<LocalFireDepartmentIcon/>} label={`Popularity: ${person.popularity}`} color="secondary"/>
 
         </Paper>
         
