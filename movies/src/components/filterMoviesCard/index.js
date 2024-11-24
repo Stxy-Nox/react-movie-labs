@@ -23,17 +23,19 @@ const formControl =
 
 export default function FilterMoviesCard(props) {
 
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data:genresData, error:genresError, isLoading:genresIsLoading, isError:genresIsError } = useQuery("genres", getGenres);
+  const { data: languagesData, error: languagesError, isLoading: languagesLoading, isError: languagesIsError } = useQuery("languages", getLanguages);
+  
 
-  if (isLoading) {
+  if (genresIsLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
+  if (genresIsError) {
+    return <h1>{genresError.message}</h1>;
   }
 
-  const genres = data.genres;
+  const genres = genresData.genres;
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });//put all at the fisrt place of  filter options
   }
