@@ -32,9 +32,10 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   const genres = data.genres;
   if (genres[0].name !== "All"){
-    genres.unshift({ id: "0", name: "All" });
+    genres.unshift({ id: "0", name: "All" });//put all at the fisrt place of  filter options
   }
 
   const handleChange = (e, type, value) => {
