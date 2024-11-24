@@ -75,7 +75,7 @@ export default function FilterMoviesCard(props) {
     handleChange(e,"sortBy",e.target.value);
   }
 
-  const handleSortByDerectionChange = (e) => {
+  const handleSortDirectionChange = (e) => {
     handleChange()
   }
 
@@ -164,8 +164,22 @@ export default function FilterMoviesCard(props) {
             <MenuItem value=""><em>None</em></MenuItem>
             <MenuItem value="vote_count">Vote Count</MenuItem>
             <MenuItem value="release_date">Release Date</MenuItem>
+            <MenuItem value="popularity">Popularity</MenuItem>
           </Select>
         </FormControl>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="sort-direction-label">Sort Direction</InputLabel>
+          <Select
+            labelId="sort-direction-label"
+            id="sort-direction-select"
+            value={props.sortDirection}
+            onChange={handleSortDirectionChange}
+          >
+            <MenuItem value="asc">Ascending</MenuItem>
+            <MenuItem value="desc">Descending</MenuItem>
+          </Select>
+        </FormControl>
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
