@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import CakeIcon from '@mui/icons-material/Cake';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
 
 
@@ -34,15 +35,16 @@ const PersonDetails = ({ person }) => {
                 <Chip label="AKA" sx={{...chip}} color="secondry" />
             </li>
             {person.also_known_as.map((a) => (
-            <li key={a.name}>
-                <Chip label={a.name} sx={{...chip}} />
-            </li>
+                <li key={a.name}>
+                    <Chip label={a.name} sx={{...chip}} />
+                </li>
             ))}
         </Paper>
 
         <Paper component={"ul"} sx={{...root}}>
             <Chip icon={<AccountCircleIcon/>} label={person.known_for_department}/>
             <Chip icon={<CakeIcon/>} label={person.birthday}/>
+            <Chip icon={<LocalFireDepartmentIcon/>} label={person.popularity}/>
 
         </Paper>
         
