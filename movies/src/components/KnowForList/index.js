@@ -11,18 +11,18 @@ const KnownForList = ({ knownFor }) => {
   }
 
   return (
-    <div style={{ marginTop: "20px", backgroundColor:"#f5f5f5" }} >
+    <div style={{ marginTop: "20px" }} >
       <Typography variant="h6" component={"h4"} gutterBottom>
         Known for :
       </Typography>
       <ImageList sx={{ display: 'flex', flexWrap: 'nowrap', overflowX: 'scroll', }} cols={1}>
         {knownFor.map((movie) => (
-          <Link to={`/movies/${movie.id}`}  >
-          <ImageListItem key={movie.id} >
+          <Link to={`/movies/${movie.id}`}  style={{ textDecoration: 'none' }}>
+          <ImageListItem key={movie.id} sx={{ minWidth: 200, marginRight: '10px' }} >
             <img
               src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : img }
               alt={movie.title}
-              
+              style={{ borderRadius: '8px' }}
             />
           </ImageListItem>
           <Typography variant="subtitle1" component={"p"} align="center">
