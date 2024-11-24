@@ -166,7 +166,7 @@ const SiteHeader = ({ history }) => {
             )}
         </Toolbar>
       </AppBar>
-      <Offset />
+      <Offset/>
     </>
   );
 };

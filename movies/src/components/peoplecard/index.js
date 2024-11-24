@@ -12,28 +12,25 @@ import { Link } from "react-router-dom";
 import { cardActionAreaClasses } from "@mui/material";
 
 
-export default function PeopleCard(people) {
-    const konwForMovies = people.known_for.map((movie) => movie.orifinal_title).join(",");
+export default function PeopleCard(props) {
+    const konwForMovies = props.people.known_for.map((movie) => movie.original_title).join(",");
     return (
         <Card>
-           <CardHeader>
-                role={
-                    <Typography variant="h5" component={"p"}>
-                        {people.known_for_department}{" "}
-                    </Typography>
-                }
-            </CardHeader> 
+           <CardHeader
+                title={props.people.known_for_department}
+                titleTypographyProps={{ variant: 'h6', component: 'p' }}
+           />
             <CardMedia
                 sx={{ height: 500 }}
                 image={
-                  people.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${people.profile_path}`
+                  props.people.profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${props.people.profile_path}`
                     : img
                 }
             />
             <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-                {people.name}
+                {props.people.name}
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {konwForMovies}
