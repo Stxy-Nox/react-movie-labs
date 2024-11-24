@@ -3,6 +3,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
+import img from "../../images/film-poster-placeholder.png";
 
 const KnownForList = ({ knownFor }) => {
   if (!knownFor || knownFor.length === 0) {
@@ -15,13 +16,12 @@ const KnownForList = ({ knownFor }) => {
         Known for :
       </Typography>
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+        {knownFor.map((movie) => (
+          <ImageListItem key={movie.id} >
             <img
-              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-              alt={item.title}
-              loading="lazy"
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : img }
+              alt={movie.title}
+              
             />
           </ImageListItem>
         ))}
